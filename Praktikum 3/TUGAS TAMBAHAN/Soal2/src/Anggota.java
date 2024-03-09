@@ -23,14 +23,13 @@ public class Anggota {
 
     public void pinjamBuku(Buku buku) throws MaksimumBukuTerpinjamException, BukuTidakTersediaException{
         if (jumlahBukuPinjaman >= 3) {
-            throw new MaksimumBukuTerpinjamException("Maaf anda sudah meminjam maksimum buku yang diperbolehkan.");
+            throw new MaksimumBukuTerpinjamException("Maaf anda sudah meminjam maksimum buku yang diperbolehkan");
         }
         // TODO 2: Buat kondisi untuk mencegah jumlah buku yang dipinjam melebihi 3 dengan throw keyword
         if (!buku.isTersedia()) {
-            System.out.println("Maaf buku yang Anda pilih tidak tersedia saat ini");
-            return; // Menghentikan eksekusi metode pinjamBuku jika buku tidak tersedia
-            // TODO 3: Buat kondisi untuk mencegah buku yang tidak tersedia dipinjam dengan throw keyword
+            throw new BukuTidakTersediaException("Maaf buku yang anda pilih tidak tersedia saat ini");
         }
+            // TODO 3: Buat kondisi untuk mencegah buku yang tidak tersedia dipinjam dengan throw keyword
         buku.setTersedia(false);
         bukuPinjaman[jumlahBukuPinjaman] = buku;
         jumlahBukuPinjaman++;
